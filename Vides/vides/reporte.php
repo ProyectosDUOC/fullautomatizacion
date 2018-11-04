@@ -19,53 +19,8 @@
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
   <div class="wrapper">
-    <header class="main-header">
-
-      <a href="home.php" class="logo">
-        <span class="logo-mini"><b>F</b>A</span>
-        <span class="logo-lg"><b>Full</b>Automatización</span>
-      </a>
-
-      <!-- Header Navbar -->
-      <nav class="navbar navbar-static-top" role="navigation">
-        <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-          <span class="sr-only">Toggle navigation</span>
-        </a>
-      </nav>
-    </header>
-    <aside class="main-sidebar">
-      <section class="sidebar">
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Administrador</a>
-        </div>
-      </div>
-
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu" data-widget="tree">
-          <li class="header">Menu</li>
-          <!-- Optionally, you can add icons to the links -->
-          <li class="treeview active">
-            <a href="#"><i class="fa fa-calendar"></i> <span>Agenda</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="nuevaEntrada.php">Nueva entrada</a></li>
-              <li><a href="home.php">Ver Agenda</a></li>
-            </ul>
-          </li>
-
-          <li class="active"><a href="reporte.php"><i class="fa fa-book"></i> <span>Reportes</span></a></li>
-        </ul>
-      </section>
-    </aside>
+    
+    <?php require_once("Navbar.php"); ?>
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
