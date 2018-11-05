@@ -21,6 +21,20 @@ class AccesoDAO {
         return $nuevo;        
     }
     
+    public static function buscarName($username){
+        $cc = DB::getInstancia();
+        $stSql = "SELECT * FROM acceso WHERE username=:username";
+        $rs = $cc->db->prepare($stSql);
+        $rs->execute(array('username' => $username));
+        $ba = $rs->fetch();
+        $nuevo = new Acceso($ba['id_acceso'],
+                            $ba['id_usuario'],
+                            $ba['username'],
+                            $ba['password'], 
+                            $ba['activo']);
+        return $nuevo;        
+    }
+
     public static function buscar($id){
         $cc = DB::getInstancia();
         $stSql = "SELECT * FROM acceso WHERE id_acceso=:id_acceso";
