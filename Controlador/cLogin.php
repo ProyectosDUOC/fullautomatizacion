@@ -25,19 +25,19 @@
                    // echo "cliente";
                     $_SESSION['acceso']= serialize($ac);     
                     $_SESSION['usuario']= serialize($usuario);  
-                    header('Location: ../webVides/admin/home.php');                        
+                    header('Location: ../Vides/admin/home.php');                        
                     break;
                 case 2:
                    // echo "piloto";
                    $_SESSION['acceso']= serialize($ac);     
                    $_SESSION['usuario']= serialize($usuario);  
-                   header('Location: ../webVides/piloto/home.php');                 
+                   header('Location: ../Vides/piloto/home.php');                 
                     break;
                 case 3:
                     // echo "Tecnicos";
                     $_SESSION['acceso']= serialize($ac);     
                     $_SESSION['usuario']= serialize($usuario);  
-                    header('Location: ../webVides/tecnico/home.php');              
+                    header('Location: ../Vides/tecnico/home.php');              
                     break;
            
             }            
