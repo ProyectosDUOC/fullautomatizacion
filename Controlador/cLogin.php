@@ -9,6 +9,7 @@
     
     $usuario = $_POST['txtUsuario'];
     $pass = $_POST['txtPass'];
+    $pass = hash('sha256', $pass);
     $isLogin = "0";
 
     $arrayAccesos = AccesoDAO::readAll();

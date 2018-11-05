@@ -14,9 +14,9 @@ INSERT INTO `usuario` (`id_usuario`, `rut`, `nombre`, `apellido`, `celular`, `do
 
 -- acceso
 
-INSERT INTO `acceso` (`id_acceso`, `id_usuario`, `username`, `password`, `activo`) VALUES ('1', '1', 'benjamin', '1234', '1');
-INSERT INTO `acceso` (`id_acceso`, `id_usuario`, `username`, `password`, `activo`) VALUES ('2', '2', 'sebastian', '1234', '1');
-INSERT INTO `acceso` (`id_acceso`, `id_usuario`, `username`, `password`, `activo`) VALUES ('3', '3', 'rodrigo', '1234', '1');
+INSERT INTO `acceso` (`id_acceso`, `id_usuario`, `username`, `password`, `activo`) VALUES ('1', '1', 'benjamin', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '1');
+INSERT INTO `acceso` (`id_acceso`, `id_usuario`, `username`, `password`, `activo`) VALUES ('2', '2', 'sebastian', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '1');
+INSERT INTO `acceso` (`id_acceso`, `id_usuario`, `username`, `password`, `activo`) VALUES ('3', '3', 'rodrigo', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '1');
 
 -- dron
 INSERT INTO `vehiculo_volador` (`id_vehiculo_volador`, `modelo`, `activo`) VALUES ('1', 'No asignado', '1');
