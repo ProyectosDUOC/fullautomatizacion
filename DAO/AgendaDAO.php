@@ -99,8 +99,7 @@ class AgendaDAO {
                             $c['descripcion'], 
                             $c['id_estado_a'],
                             $c['id_tipo_monitoreo'],
-                            $c['id_usuario']);
-        return $nuevo;        
+                            $c['id_usuario']);     
             array_push($pila, $nuevo);
         }
         return $pila;
