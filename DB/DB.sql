@@ -11,7 +11,7 @@ CREATE TABLE acceso
     id_acceso  INTEGER NOT NULL AUTO_INCREMENT,
     id_usuario INTEGER NOT NULL ,
     username   VARCHAR (30) NOT NULL ,
-    password   VARCHAR (30) NOT NULL ,
+    password   VARCHAR (64) NOT NULL ,
     activo     INTEGER NOT NULL,
     PRIMARY KEY(id_acceso)
   ) ;
