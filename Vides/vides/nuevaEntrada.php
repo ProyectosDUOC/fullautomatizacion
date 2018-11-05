@@ -1,6 +1,30 @@
+<?php  
+  session_start();
+  if (!isset($rootDir)) $rootDir = $_SERVER['DOCUMENT_ROOT'];
+  require_once($rootDir . '/DAO/AccesoDAO.php'); 
+  require_once($rootDir . '/DAO/UsuarioDAO.php'); 
+  require_once($rootDir . '/DAO/TipoMonitoreoDAO.php'); 
+
+  $nombres="";
+  if(isset($_SESSION['acceso'])){
+      $acceso = $_SESSION['acceso'];
+      $acceso = unserialize($acceso);
+      if($c->getIdTipo()==1){ //Cliente 1
+        $usuario = $_SESSION['usuario'];
+        $usuario = unserialize($usuario);
+        $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
+          
+         
+      }
+    }else{
+      header('Location: ../../index.html');
+    }
+  }else{
+      header('Location: ../../index.html');
+  }
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,7 +84,7 @@
                 </div>
                 <div class="form-group">
                   <label for="fecha1">Fecha Planificación</label>
-                  <input type="date" class="form-control" id="fecha1" name="txtFechaR" value="<?php echo $fecha ?>">
+                  <input type="date" class="form-control" id="fecha1" name="txtFechaR" value="">
                 </div>
                 <div class="form-group">
                   <label for="descripcion">Descripción</label>
@@ -68,6 +92,16 @@
                 </div>
                 <div class="form-group">
                   <label>Tipo Monitoreo</label>
+
+                    <select class="custom-select d-block w-100" id="tipoUsuario" name="txtTipoUsuario" required="">
+                      <?php 
+                        $tipoMonitoreo = CategoriaDAO::sqlSelectAll();
+                        foreach($cate as $c){                                                   
+                          echo "<option value=" . $c->getIdCate() . " >" . $c->getNombreCate() . "</option>";                                                      
+                        }?>                                            
+                    </select>
+
+
                   <select class="form-control"  name="txtEstado" require>
                     <option>Fertilizandte</option>
                     <option>Scan Dron</option>

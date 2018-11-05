@@ -1,6 +1,29 @@
+<?php  
+  session_start();
+  if (!isset($rootDir)) $rootDir = $_SERVER['DOCUMENT_ROOT'];
+  require_once($rootDir . '/DAO/AccesoDAO.php'); 
+  require_once($rootDir . '/DAO/UsuarioDAO.php'); 
+
+  $nombres="";
+  if(isset($_SESSION['acceso'])){
+      $acceso = $_SESSION['acceso'];
+      $acceso = unserialize($acceso);
+      if($c->getIdTipo()==1){ //Cliente 1
+        $usuario = $_SESSION['usuario'];
+        $usuario = unserialize($usuario);
+        $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
+          
+         
+      }
+    }else{
+      header('Location: ../../index.html');
+    }
+  }else{
+      header('Location: ../../index.html');
+  }
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
