@@ -7,17 +7,15 @@
     require_once ($rootDir . "/DAO/AccesoDAO.php");
     require_once ($rootDir . "/DAO/UsuarioDAO.php");
     
-    $usuario = $_POST['txtUsuario'];
+    $username = $_POST['txtUsuario'];
     $pass = $_POST['txtPass'];
     $pass = hash('sha256', $pass);
     $isLogin = "0";
 
-    $arrayAccesos = AccesoDAO::readAll();
-
-    if(AccesoDAO::ingreso($usuario,$pass)){
+    if(AccesoDAO::ingreso($username,$pass)){
         
-        $usuario = UsuarioDAO::buscarName($usuario);
-
+        $ac = AccesoDAO::buscarName($username);
+        $usuario = UsuarioDAO::buscar($ac->getId_usuario()); 
         $tipoU = $usuario->getId_tipo_u();
 
         switch ($tipoU) {
@@ -25,7 +23,7 @@
                 // echo "cliente";
                 $_SESSION['acceso']= serialize($ac);     
                 $_SESSION['usuario']= serialize($usuario);  
-                header('Location: ../Vides/admin/home.php');                        
+                header('Location: ../Vides/vides/home.php');                        
                 break;
             case 2:
                 // echo "piloto";
@@ -43,7 +41,7 @@
     }
     else {   
         $_SESSION['mensaje']= "Usuario Incorrecto";
-        header('Location: ../login.php');   
+        header('Location: ../login.html');   
     }
     
 

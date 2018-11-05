@@ -9,9 +9,10 @@
   if(isset($_SESSION['acceso'])){
       $acceso = $_SESSION['acceso'];
       $acceso = unserialize($acceso);
-      if($c->getIdTipo()==1){ //Cliente 1
-        $usuario = $_SESSION['usuario'];
-        $usuario = unserialize($usuario);
+      $usuario = $_SESSION['usuario'];
+      $usuario = unserialize($usuario);
+      if($usuario->getId_tipo_u()==1){ //Cliente 1
+      
         $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
           
          
@@ -19,9 +20,6 @@
     }else{
       header('Location: ../../index.html');
     }
-  }else{
-      header('Location: ../../index.html');
-  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,10 +93,10 @@
 
                     <select class="custom-select d-block w-100" id="tipoUsuario" name="txtTipoUsuario" required="">
                       <?php 
-                        $tipoMonitoreo = CategoriaDAO::sqlSelectAll();
-                        foreach($cate as $c){                                                   
-                          echo "<option value=" . $c->getIdCate() . " >" . $c->getNombreCate() . "</option>";                                                      
-                        }?>                                            
+                        $tipoM = TipoMonitoreoDAO::readAll();
+                        foreach($tipoM as $t){    ?>  
+                          <option value="<?php echo $t->getId_tipo_monitoreo() ?>" ><?php echo $t->getNombre_monitoreo() ?> </option>                                                      
+                       <?php } ?>                                            
                     </select>
 
 

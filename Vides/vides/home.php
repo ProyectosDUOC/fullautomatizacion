@@ -6,21 +6,20 @@
 
   $nombres="";
   if(isset($_SESSION['acceso'])){
-      $acceso = $_SESSION['acceso'];
-      $acceso = unserialize($acceso);
-      if($c->getIdTipo()==1){ //Cliente 1
-        $usuario = $_SESSION['usuario'];
-        $usuario = unserialize($usuario);
-        $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
-          
-         
-      }
-    }else{
-      header('Location: ../../index.html');
+    $acceso = $_SESSION['acceso'];
+    $acceso = unserialize($acceso);
+    $usuario = $_SESSION['usuario'];
+    $usuario = unserialize($usuario);
+
+
+    if($usuario->getId_tipo_u()==1){ //Cliente 1
+           
+      $nombres = $usuario->getNombre() . " " . $usuario->getApellido();            
     }
   }else{
-      header('Location: ../../index.html');
+    header('Location: ../../index.html');
   }
+ 
 ?>
 <!DOCTYPE html>
 <html>
