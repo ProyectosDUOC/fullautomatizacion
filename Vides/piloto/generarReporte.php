@@ -60,12 +60,12 @@ if (isset($_SESSION['acceso'])) {
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Vides - Calendario
+          Vides - Generar Reporte
           <small>Sistema de gestión</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Level 1</a></li>
-          <li class="active">Reportes</li>
+          <li><a href="#"><i class="fa fa-dashboard"></i> Piloto</a></li>
+          <li class="active">Generar Reporte</li>
         </ol>
       </section>
       <section class="content">
@@ -75,17 +75,15 @@ if (isset($_SESSION['acceso'])) {
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Different Height</h3>
+              <h3 class="box-title">Informacion de vuelo</h3>
             </div>
             <div class="box-body">
-               <div class="form-group">
-                <label>URL Fotos</label>
-                  <div class="input-group">
-                      <div class="input-group-addon">
-                          <i class="fa fa-laptop"></i>
-                      </div>
-                      <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask>
-                  </div>
+
+              <div class="form-group">
+                <label>Vehiculo Volador</label>
+                <select class="form-control">
+                  <option>option 1</option>
+                </select>
               </div>
 
               <div class="form-group">
@@ -124,9 +122,13 @@ if (isset($_SESSION['acceso'])) {
             </div>
           </div>
 
+        </div>
+
+        <div class="col-md-6">
+
           <div class="box box-success">
               <div class="box-header with-border">
-                  <h3 class="box-title">Different Height</h3>
+                  <h3 class="box-title">Datos Recolectados</h3>
               </div>
               <div class="box-body">
                   <div class="form-group">
@@ -158,17 +160,44 @@ if (isset($_SESSION['acceso'])) {
                           </div>
                       </div>
                   </div>
+                  
+                  <div class="form-group">
+                    <label>URL Fotos</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-laptop"></i>
+                        </div>
+                        <input type="text" class="form-control">
+                    </div>
+                  </div>
 
-                <div class="form-group">
-                  <label>Vehiculo Volador</label>
-                  <select class="form-control">
-                    <option>option 1</option>
-                  </select>
-                </div>
+                  <div class="form-group">
+                    <label>Nombre Carpeta</label>                    
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                          <i class="fa fa-folder"></i>
+                        </div>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
 
               </div>
           </div>
 
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Enviar Reporte</h3>
+            </div>
+            <div class="box-body">
+              <button type="submit" class="btn btn-default">Cancelar</button>
+              <button type="submit" class="btn btn-info pull-right">Generar</button>
+            </div>
+          </div>
         </div>
       </div>
       </section>
