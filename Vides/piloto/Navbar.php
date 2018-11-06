@@ -54,7 +54,6 @@
       <div class="pull-left info">
         <p><?php echo $nombres ?></p>
         <a href="#"><i class="fa fa-circle text-success"></i> Piloto Dron</a>
-
       </div>
     </div>
 
@@ -81,7 +80,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="home.php">Ver Reuniones</a></li>
+          <li><a href="reunion.php">Ver Reuniones</a></li>
         </ul>
       </li>      
     </ul>
