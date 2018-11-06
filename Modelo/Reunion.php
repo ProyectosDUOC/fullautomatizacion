@@ -14,14 +14,14 @@
 class Reunion {
     private $id_reunion;
     private $fecha_creada;
-    private $fehca_reunion;
+    private $fecha_reunion;
     private $hora;
     private $minuto;
     
-    function __construct($id_reunion, $fecha_creada, $fehca_reunion, $hora, $minuto) {
+    function __construct($id_reunion, $fecha_creada, $fecha_reunion, $hora, $minuto) {
         $this->id_reunion = $id_reunion;
         $this->fecha_creada = $fecha_creada;
-        $this->fehca_reunion = $fehca_reunion;
+        $this->fecha_reunion = $fecha_reunion;
         $this->hora = $hora;
         $this->minuto = $minuto;
     }
@@ -33,8 +33,8 @@ class Reunion {
         return $this->fecha_creada;
     }
 
-    function getFehca_reunion() {
-        return $this->fehca_reunion;
+    function getFecha_reunion() {
+        return $this->fecha_reunion;
     }
 
     function getHora() {
@@ -53,8 +53,8 @@ class Reunion {
         $this->fecha_creada = $fecha_creada;
     }
 
-    function setFehca_reunion($fehca_reunion) {
-        $this->fehca_reunion = $fehca_reunion;
+    function setFecha_reunion($fecha_reunion) {
+        $this->fecha_reunion = $fecha_reunion;
     }
 
     function setHora($hora) {

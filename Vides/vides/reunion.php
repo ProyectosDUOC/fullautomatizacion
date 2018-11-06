@@ -5,7 +5,7 @@
   require_once($rootDir . '/DAO/UsuarioDAO.php'); 
   require_once($rootDir . '/DAO/AgendaDAO.php');   
   require_once($rootDir . '/DAO/TipoMonitoreoDAO.php'); 
-  require_once($rootDir . '/DAO/ReporteVidesDAO.php'); 
+  require_once($rootDir . '/DAO/ReunionDAO.php'); 
 
   $nombres="";
   if(isset($_SESSION['acceso'])){
@@ -50,12 +50,12 @@
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
-          Vides - Reuniones
+          Vides - Reunión
           <small>Sistema de gestión</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Level 1</a></li>
-          <li class="active">Reportes</li>
+          <li class="active">Crear Reporte</li>
         </ol>
       </section>
     </section>
@@ -64,57 +64,39 @@
           <div class="col-xs-12">
             <div class="box">
               <center>
-                <h2>Reporte Piloto Dron</h2>
+                <h2>Reunión para la planificación</h2>
               </center>
-              <!-- 
-                  +---------------------+--------------+------+-----+---------+-------+
-                  | Field               | Type         | Null | Key | Default | Extra |
-                  +---------------------+--------------+------+-----+---------+-------+
-                  | id_reporte          | int(11)      | NO   | PRI | NULL    |       |
-                  | fecha_realizada     | datetime     | NO   |     | NULL    |       |
-                  | hora_inicial        | datetime     | YES  |     | NULL    |       |
-                  | hora_final          | datetime     | YES  |     | NULL    |       |
-                  | temperatura         | int(11)      | YES  |     | NULL    |       |
-                  | humedad             | int(11)      | YES  |     | NULL    |       |
-                  | velocidad_viento    | int(11)      | YES  |     | NULL    |       |
-                  | id_agenda           | int(11)      | NO   | MUL | NULL    |       |
-                  | id_usuario          | int(11)      | NO   | MUL | NULL    |       |
-                  | nombre_carpeta      | varchar(100) | YES  |     | NULL    |       |
-                  | URL                 | varchar(200) | YES  |     | NULL    |       |
-                  | id_vehiculo_volador | int(11)      | NO   | MUL | NULL    |       |
-                  +---------------------+--------------+------+-----+---------+-------+
-              -->
               <div class="box-body table-responsive no-padding">
               <table id="tabla1" class="table table-bordered table-hover" cellspacing="0"  width="100%">               
                   <thead>
                     <tr class="amber darken-3">
-                      <th>Id reporte</th>
-                      <th>Id Agenda</th>
-                      <th>Fecha Realizada</th>
-                      <th>Piloto</th>
+                      <th>Id Reunion</th>
+                      <th>Fecha Creada</th>
+                      <th>Fecha Reunion</th>
+                      <th>Hora</th>
                       <th>Estado</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php  
-                        $reporte = ReporteVidesDAO::readAll();
+                        $reunion = ReunionDAO::readAll();
                         
-                        foreach($reporte as $r){
-                          $a = AgendaDAO::buscar($r->getId_agenda());
+                        foreach($reunion as $re){
+                       
                     ?>
                     <tr>
-                      <td><?php echo $r->getId_reporte() ?></td>
-                      <td><?php echo $a->getId_agenda() ?></td>
-                      <td><?php $fe = $a->getFecha_programada()."";
+                      <td><?php echo $re->getId_reunion(); ?></td>
+                      <td><?php $fe = $re->getFecha_creada()."";
                                 $date = date_create($fe);
                                 echo date_format($date, 'd-m-Y');
                       ?></td>
-                      <td><?php
-                            $piloto = usuarioDAO::buscar($r->getId_usuario());
-                            echo $piloto->getNombre();
+                      <td><?php $fe = $re->getFecha_reunion()."";
+                                $date = date_create($fe);
+                                echo date_format($date, 'd-m-Y');
                       ?></td>
+                      <td><?php echo $re->getHora() . ":" . $re->getMinuto() ?></td>
                       <td>
-                        <button type="submit" name="o<?php echo $r-getId_reporte() ?>" class="btn btn-success"  >Ver</button>
+                        <button type="submit" name="o<?php echo $re->getId_reunion(); ?>" class="btn btn-success"  >Ver</button>
                       </td>
                     </tr>
                         <?php  } ?>

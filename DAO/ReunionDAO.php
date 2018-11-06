@@ -21,6 +21,25 @@ class ReunionDAO {
         return $nuevo;        
     }
     
+    public static function ultimoId(){
+        $cc = DB::getInstancia();
+        $stSql = "SELECT * FROM reunion order by id_reunion desc  limit 1";
+        $rs = $cc->db->prepare($stSql);
+        $rs->execute();
+        $ba = $rs->fetch();
+        $nuevo = new Reunion($ba['id_reunion'],
+                            $ba['fecha_creada'],
+                            $ba['fecha_reunion'],
+                            $ba['hora'], 
+                            $ba['minuto']);
+        if(empty($nuevo)){
+           $num= 0;
+        }else{
+            $num = $nuevo->getId_reunion();
+        }
+        return $num;        
+    }
+
     public static function buscar($id){
         $cc = DB::getInstancia();
         $stSql = "SELECT * FROM reunion WHERE id_reunion=:id_reunion";
@@ -85,7 +104,7 @@ class ReunionDAO {
         
         $pila = array();
         foreach ($ba as $c) {
-            $nuevo = new Acceso($c['id_reunion'],
+            $nuevo = new Reunion($c['id_reunion'],
                                 $c['fecha_creada'],
                                 $c['fecha_reunion'],
                                 $c['hora'],

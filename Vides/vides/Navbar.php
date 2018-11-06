@@ -84,8 +84,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="nuevaEntrada.php">Nueva Reunión</a></li>
-          <li><a href="home.php">Ver Reuniones</a></li>
+          <li><a href="nuevaReunion.php">Nueva Reunión</a></li>
+          <li><a href="reunion.php">Ver Reuniones</a></li>
         </ul>
       </li>      
     </ul>
