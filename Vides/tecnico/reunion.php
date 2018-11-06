@@ -13,7 +13,7 @@
       $acceso = unserialize($acceso);
       $usuario = $_SESSION['usuario'];
       $usuario = unserialize($usuario);
-      if($usuario->getId_tipo_u()==2){ //Cliente 1
+      if($usuario->getId_tipo_u()==3){ //Cliente 3
       
         $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
           
