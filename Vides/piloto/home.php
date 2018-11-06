@@ -90,17 +90,23 @@
                   </tr>
                   
                   <?php 
-                  echo $agendas;
                   foreach ($agendas as $ag) 
-                  {
+                  {                      
                       echo "<tr>";
-                      echo "<td>$ag->getId_agenda()</td>";
-                      echo "<td>$ag->getFecha_creacion()</td>";
-                      echo "<td>$ag->getFecha_programada()</td>";
-                      echo "<td>$ag->getDescripcion()</td>";
-                      echo "<td>$ag->getId_estado_a()</td>";
-                      echo "<td>$ag->getId_tipo_monitoreo()</td>";
-                      echo "<td>$ag->getId_usuario()</td>";
+                      $idAgenda = $ag->getId_agenda();
+                      echo "<td>$idAgenda</td>";
+                      $fCreacion = $ag->getFecha_creacion();
+                      echo "<td>$fCreacion</td>";
+                      $fProgramada =  $ag->getFecha_programada();
+                      echo "<td>$fProgramada </td>";
+                      $desc = $ag->getDescripcion();
+                      echo "<td>$desc</td>";
+                      $estado = $ag->getId_estado_a();
+                      echo "<td>$estado</td>";
+                      $tipoMon = $ag->getId_tipo_monitoreo();
+                      echo "<td>$tipoMon</td>";
+                      $usuarioAg = $ag->getId_usuario();
+                      echo "<td>$usuarioAg</td>";
                       echo "</tr>";
                   }
                   ?>
