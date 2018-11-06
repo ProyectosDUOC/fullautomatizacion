@@ -51,7 +51,6 @@ if (isset($_SESSION['acceso'])) {
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
 
   <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
-  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css">
 
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.css">
@@ -133,7 +132,7 @@ if (isset($_SESSION['acceso'])) {
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input name="fRealizada" type="text" class="form-control pull-right" id="datepicker">
+                        <input name="fRealizada" type="date" class="form-control pull-right">
                     </div>
                 </div>
 
@@ -235,15 +234,10 @@ if (isset($_SESSION['acceso'])) {
   <!-- Bootstrap 3.3.7 -->
   <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
-  <script src="../../bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../../dist/js/adminlte.min.js"></script>
   <script>
     $(function () {
-      //Date picker
-      $('#datepicker').datepicker({
-        autoclose: true
-      })
           //Timepicker
       $('.timepicker').timepicker({
         showInputs: false
