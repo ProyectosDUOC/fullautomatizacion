@@ -64,7 +64,7 @@
           <div class="col-xs-12">
             <div class="box">
               <center>
-                <h2>Reunión para la planificación</h2>
+                <h2>Reunión de planificación</h2>
               </center>
               <div class="box-body table-responsive no-padding">
               <table id="tabla1" class="table table-bordered table-hover" cellspacing="0"  width="100%">               
