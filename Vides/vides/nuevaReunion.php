@@ -50,6 +50,15 @@
     $m = $todayh["mon"];
     $y = $todayh["year"];
     $fecha = "$d/$m/$y";
+    $dia ="00";
+    $di = $d + 1;
+    if ($di >=1 && $di<=9){
+      $dia = "0".$di;
+    }else{
+      $dia = $di;
+    }
+    $fechaHoy = "$y-$m-$dia";
+
   ?>
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
@@ -82,7 +91,7 @@
                 </div>
                 <div class="form-group">
                   <label for="fecha1">Fecha Reunion</label>
-                  <input type="date" class="form-control" id="fecha1" name="txtFechaR" value="" required="" >
+                  <input type="date" class="form-control"  id="fecha1" name="txtFechaR" value="" min="<?php echo $fechaHoy?>"  required="" >
                 </div>
                 <div class="form-group">
                   <label for="descripcion">Horario</label>

@@ -12,13 +12,9 @@
       $acceso = $_SESSION['acceso'];
       $acceso = unserialize($acceso);
       $usuario = $_SESSION['usuario'];
-      $usuario = unserialize($usuario);
-      if($usuario->getId_tipo_u()==3){ //Cliente 3
-      
-        $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
-          
-         
-      }
+      $usuario = unserialize($usuario);     
+      $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
+                
     }else{
       header('Location: ../../index.html');
     }

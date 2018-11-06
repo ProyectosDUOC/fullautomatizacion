@@ -22,10 +22,10 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../dist/img/user-benjamin.jpg" class="img-circle" alt="User Image">
+                <img src="../../dist/img/user-paty.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                <?php echo  $nombres?> - tecnico
+                <?php echo  $nombres?> - Técnico en Termodinámica
                
                 </p>
               </li>
@@ -53,27 +53,14 @@
       </div>
       <div class="pull-left info">
         <p><?php echo $nombres ?></p>
-        <a href="#"><i class="fa fa-circle text-success"></i> Tecnico</a>
+        <a href="#"><i class="fa fa-circle text-success"></i>  Técnico en Termodinámica</a>
       </div>
     </div>
 
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">Menu</li>
-      <!-- Optionally, you can add icons to the links -->
-      <li class="treeview active">
-        <a href="#"><i class="fa fa-plus"></i> <span>Agenda</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="nuevaEntrada.php">Nueva entrada</a></li>
-          <li><a href="home.php">Ver Agenda</a></li>
-        </ul>
-      </li>
-
-      <li class="active"><a href="reporte.php"><i class="fa fa-book"></i> <span>Reportes</span></a></li>
+      <li class="active"><a href="home.php"><i class="fa fa-book"></i> <span>Reportes</span></a></li>
       <li class="treeview active">
         <a href="#"><i class="fa fa-calendar"></i> <span>Reunión</span>
           <span class="pull-right-container">
@@ -81,7 +68,6 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="nuevaReunion.php">Nueva Reunión</a></li>
           <li><a href="reunion.php">Ver Reuniones</a></li>
         </ul>
       </li>      
