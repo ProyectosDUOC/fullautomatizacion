@@ -3,7 +3,10 @@
   if (!isset($rootDir)) $rootDir = $_SERVER['DOCUMENT_ROOT'];
   require_once($rootDir . '/DAO/AccesoDAO.php'); 
   require_once($rootDir . '/DAO/UsuarioDAO.php'); 
-  require_once($rootDir . '/DAO/AgendaDAO.php'); 
+  require_once($rootDir . '/DAO/AgendaDAO.php');
+  require_once($rootDir . '/DAO/TipoMonitoreoDAO.php');
+  require_once($rootDir . '/DAO/EstadoAgendaDAO.php');
+
 
   $nombres="";
   $agendas=Array();
@@ -70,7 +73,6 @@
                 <div class="box-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
                     <div class="input-group-btn">
                       <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                     </div>
@@ -87,26 +89,44 @@
                     <th>Estado</th>
                     <th>Tipo Monitoreo</th>
                     <th>Usuario</th>
+                    <th>Generar Reporte</th>
                   </tr>
                   
                   <?php 
                   foreach ($agendas as $ag) 
                   {                      
                       echo "<tr>";
+
                       $idAgenda = $ag->getId_agenda();
                       echo "<td>$idAgenda</td>";
+                      
                       $fCreacion = $ag->getFecha_creacion();
                       echo "<td>$fCreacion</td>";
+                      
                       $fProgramada =  $ag->getFecha_programada();
                       echo "<td>$fProgramada </td>";
+                      
                       $desc = $ag->getDescripcion();
                       echo "<td>$desc</td>";
-                      $estado = $ag->getId_estado_a();
-                      echo "<td>$estado</td>";
-                      $tipoMon = $ag->getId_tipo_monitoreo();
+
+                      $estadoId = $ag->getId_estado_a();
+                      $estadoStr = EstadoAgendaDAO::buscar($estadoId)->getNombre_estado();
+                      echo "<td>$estadoStr</td>";
+
+                      $tipoMon = TipoMonitoreoDAO::buscar($ag->getId_tipo_monitoreo());
+                      $tipoMon = $tipoMon->getNombre_monitoreo();
                       echo "<td>$tipoMon</td>";
-                      $usuarioAg = $ag->getId_usuario();
+
+                      $usuarioAg = UsuarioDAO::buscar($ag->getId_usuario());
+                      $usuarioAg = $usuarioAg->getNombre() ." ". $usuarioAg->getApellido();
                       echo "<td>$usuarioAg</td>";
+
+                      echo "<td>";
+                      if($estadoId==1){
+                        echo "<a class='btn btn-primary' href='generarReporte.php?id=$idAgenda'>Generar Reporte</a>";
+                      }
+                      echo "</td>";
+
                       echo "</tr>";
                   }
                   ?>
