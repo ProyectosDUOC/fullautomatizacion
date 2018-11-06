@@ -68,8 +68,7 @@
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Agenda    </h3>
-                <a class="btn btn-primary" href="nuevaEntrada.php">Nueva Entrada</a>
+                <h3 class="box-title">Agendas</h3>
                 <div class="box-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
