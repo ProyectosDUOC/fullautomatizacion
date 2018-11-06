@@ -21,6 +21,26 @@ class ComentarioReporteDAO {
                             $ba['id_reporte']);
         return $nuevo;        
     }
+
+    public static function ultimoId(){
+        $cc = DB::getInstancia();
+        $stSql = "SELECT * FROM comentario_reporte order by id_comentario desc  limit 1";
+        $rs = $cc->db->prepare($stSql);
+        $rs->execute();
+        $ba = $rs->fetch();
+        $nuevo = new ComentarioReporte($ba['id_comentario'],
+                            $ba['id_usuario'],
+                            $ba['fecha_comentario'],
+                            $ba['comentario'], 
+                            $ba['activo'],
+                            $ba['id_reporte']);
+        if(empty($nuevo)){
+           $num= 0;
+        }else{
+            $num = $nuevo->getId_comentario();
+        }
+        return $num;        
+    }
       
     public static function agregar($nuevo) {
         $cc=DB::getInstancia();
@@ -59,6 +79,28 @@ class ComentarioReporteDAO {
                             $c['activo'],
                             $c['id_reporte']);      
             array_push($pila, $nuevo);
+        }
+        return $pila;
+    }
+
+    public static function buscarIdReporte($idR) { 
+        $cc =DB::getInstancia();
+        $stSql = "SELECT * FROM comentario_reporte";
+        $rs = $cc->db->prepare($stSql);
+        $rs->execute();
+        $ba = $rs->fetchAll();
+        
+        $pila = array();
+        foreach ($ba as $c) {
+               $nuevo = new ComentarioReporte($c['id_comentario'],
+                            $c['id_usuario'],
+                            $c['fecha_comentario'],
+                            $c['comentario'], 
+                            $c['activo'],
+                            $c['id_reporte']);   
+                if($nuevo->getId_reporte()==$idR){
+                    array_push($pila, $nuevo);
+                }               
         }
         return $pila;
     }

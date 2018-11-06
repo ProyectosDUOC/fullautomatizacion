@@ -96,7 +96,7 @@ if (isset($_SESSION['acceso'])) {
                     foreach ($drones as $drone){
                       $idDrone = $drone->getId_vehiculo_volador();
                       $nDrone = $drone->getModelo();
-                      echo "<option value='$idDrone'> $nDrone </option>";
+                      echo "<option required value='$idDrone'> $nDrone </option>";
                     }
                     ?>
                   </select>
@@ -106,7 +106,7 @@ if (isset($_SESSION['acceso'])) {
                     <div class="form-group">
                         <label>Hora inicial:</label>
                         <div class="input-group">
-                            <input name="hInicial" type="text" class="form-control timepicker">
+                            <input name="hInicial" type="text" class="form-control timepicker" required="">
                             <div class="input-group-addon">
                                 <i class="fa fa-clock-o"></i>
                             </div>
@@ -118,7 +118,7 @@ if (isset($_SESSION['acceso'])) {
                     <div class="form-group">
                         <label>Hora final:</label>
                         <div class="input-group">
-                            <input name="hFinal" type="text" class="form-control timepicker">
+                            <input name="hFinal" type="text" class="form-control timepicker" required="">
                             <div class="input-group-addon">
                                 <i class="fa fa-clock-o"></i>
                             </div>
@@ -132,7 +132,7 @@ if (isset($_SESSION['acceso'])) {
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input name="fRealizada" type="date" class="form-control pull-right">
+                        <input name="fRealizada" type="date" class="form-control pull-right" required=""> 
                     </div>
                 </div>
 
@@ -151,9 +151,9 @@ if (isset($_SESSION['acceso'])) {
                 </div>
                 <div class="box-body">
                     <div class="form-group">
-                        <label>Temperatura:</label>
+                        <label>Temperatura °C :</label>
                         <div class="input-group">
-                            <input name="temp" type="text" class="form-control">
+                            <input name="temp" type="text" class="form-control" required="">
                             <div class="input-group-addon">
                                 <i class="fa fa-thermometer-empty"></i>
                             </div>
@@ -161,9 +161,9 @@ if (isset($_SESSION['acceso'])) {
                     </div>
 
                     <div class="form-group">
-                        <label>Humedad:</label>
+                        <label>Humedad % :</label>
                         <div class="input-group">
-                            <input name="humedad" type="text" class="form-control">
+                            <input name="humedad" type="text" max="100" class="form-control" required="">
                             <div class="input-group-addon">
                                 <i class="fa fa-cloud"></i>
                             </div>
@@ -171,9 +171,9 @@ if (isset($_SESSION['acceso'])) {
                     </div>
 
                     <div class="form-group">
-                        <label>Velocidad Viento:</label>
+                        <label>Velocidad Viento m/s:</label>
                         <div class="input-group">
-                            <input name="viento" type="text" class="form-control">
+                            <input name="viento" type="text" class="form-control" required="">
                             <div class="input-group-addon">
                                 <i class="fa fa-align-left"></i>
                             </div>
@@ -186,7 +186,7 @@ if (isset($_SESSION['acceso'])) {
                           <div class="input-group-addon">
                               <i class="fa fa-laptop"></i>
                           </div>
-                          <input name="url" type="text" class="form-control">
+                          <input name="url" type="text" class="form-control" required="">
                       </div>
                     </div>
 
@@ -196,7 +196,7 @@ if (isset($_SESSION['acceso'])) {
                           <div class="input-group-addon">
                             <i class="fa fa-folder"></i>
                           </div>
-                        <input name="carpeta" type="text" class="form-control">
+                        <input name="carpeta" type="text" class="form-control" required="">
                       </div>
                     </div>
 

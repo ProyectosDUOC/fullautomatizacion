@@ -32,7 +32,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="#" class="btn btn-danger btn-flat">Cerrar Sesión</a>
+                  <a href="../../index.html" class="btn btn-danger btn-flat">Cerrar Sesión</a>
                 </div>
               </li>
             </ul>

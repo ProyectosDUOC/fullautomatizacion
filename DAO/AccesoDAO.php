@@ -68,7 +68,7 @@ class AccesoDAO {
     }
 
     public static function actualizar($nuevo) {
-        $cc=BD::getInstancia();
+        $cc=DB::getInstancia();
 
         $stSql = "UPDATE acceso SET "
                 . " username=:username"
@@ -76,9 +76,9 @@ class AccesoDAO {
                 . ",activo=:activo"
                 . " WHERE id_acceso=:id_acceso";
         $rs = $cc->db->prepare($stSql);
-        $params = self::getParams($nuevo);
-      
+        $params = self::getParams($nuevo);      
         return $rs->execute($params);
+        
     }
 
     public static function eliminar($nuevo) {

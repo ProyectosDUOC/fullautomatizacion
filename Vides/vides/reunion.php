@@ -74,7 +74,6 @@
                       <th>Fecha Creada</th>
                       <th>Fecha Reunion</th>
                       <th>Hora</th>
-                      <th>Estado</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -95,9 +94,6 @@
                                 echo date_format($date, 'd-m-Y');
                       ?></td>
                       <td><?php echo $re->getHora() . ":" . $re->getMinuto() ?></td>
-                      <td>
-                        <button type="submit" name="o<?php echo $re->getId_reunion(); ?>" class="btn btn-success"  >Ver</button>
-                      </td>
                     </tr>
                         <?php  } ?>
                   </tbody>

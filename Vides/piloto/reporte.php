@@ -13,12 +13,8 @@
       $acceso = unserialize($acceso);
       $usuario = $_SESSION['usuario'];
       $usuario = unserialize($usuario);
-      if($usuario->getId_tipo_u()==2){ //Cliente 1
-      
-        $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
-          
-         
-      }
+      $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
+     
     }else{
       header('Location: ../../index.html');
     }
@@ -114,7 +110,7 @@
                             echo $piloto->getNombre();
                       ?></td>
                       <td>
-                        <button type="submit" name="o<?php echo $r->getId_reporte() ?>" class="btn btn-success"  >Ver</button>
+                        <a href="verReporte.php?id=<?php echo $r->getId_reporte() ?>" class="btn btn-success"  >Ver</a>
                       </td>
                     </tr>
                         <?php  } ?>

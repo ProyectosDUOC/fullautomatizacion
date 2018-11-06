@@ -8,9 +8,9 @@ INSERT INTO  `tipo_usuario` (`id_tipo_u`, `nombre_tipo_u`) VALUES ('3', 'Tecnico
 
 -- usuario
 
-INSERT INTO `usuario` (`id_usuario`, `rut`, `nombre`, `apellido`, `celular`, `domicilio`, `email`, `activo`, `id_tipo_u`) VALUES ('1', '11', 'benjamin', 'mora', '82828', 'los crisantemos', 'b.morat@alumnos.duoc.cl', '1', '1');
-INSERT INTO `usuario` (`id_usuario`, `rut`, `nombre`, `apellido`, `celular`, `domicilio`, `email`, `activo`, `id_tipo_u`) VALUES ('2', '12', 'sebastian', 'orrego', '123123', 'san bernardo', 'seba@gmail.com', '1', '2');
-INSERT INTO `usuario` (`id_usuario`, `rut`, `nombre`, `apellido`, `celular`, `domicilio`, `email`, `activo`, `id_tipo_u`) VALUES ('3', '13', 'rodrigo', 'arranguiz', '123123', 'san bernardo', 'r@gmail.com', '1', '3');
+INSERT INTO `usuario` (`id_usuario`, `rut`, `nombre`, `apellido`, `celular`, `domicilio`, `email`, `activo`, `id_tipo_u`) VALUES ('1', '11', 'Benjamin', 'Mora', '82828', 'los crisantemos', 'b.morat@alumnos.duoc.cl', '1', '1');
+INSERT INTO `usuario` (`id_usuario`, `rut`, `nombre`, `apellido`, `celular`, `domicilio`, `email`, `activo`, `id_tipo_u`) VALUES ('2', '12', 'Sebastian', 'Orrego', '123123', 'san bernardo', 'seba@gmail.com', '1', '2');
+INSERT INTO `usuario` (`id_usuario`, `rut`, `nombre`, `apellido`, `celular`, `domicilio`, `email`, `activo`, `id_tipo_u`) VALUES ('3', '13', 'Rodrigo', 'Arranguiz', '123123', 'san bernardo', 'r@gmail.com', '1', '3');
 
 -- acceso
 

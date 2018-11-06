@@ -98,17 +98,39 @@
                       echo "<td>$idAgenda</td>";
                       
                       $fCreacion = $ag->getFecha_creacion();
+                      $date = date_create($fCreacion);
+                      $fCreacion = date_format($date, 'd-m-Y');
                       echo "<td>$fCreacion</td>";
                       
-                      $fProgramada =  $ag->getFecha_programada();
+                      $fProgramada =  $ag->getFecha_programada();                      
+                      $date = date_create($fProgramada);
+                      $fProgramada = date_format($date, 'd-m-Y');                   
+
+
                       echo "<td>$fProgramada </td>";
                       
                       $desc = $ag->getDescripcion();
                       echo "<td>$desc</td>";
 
                       $estadoId = $ag->getId_estado_a();
-                      $estadoStr = EstadoAgendaDAO::buscar($estadoId)->getNombre_estado();
-                      echo "<td>$estadoStr</td>";
+
+                      $color = "success";
+                      $mensaje = "pendiente";
+                      if($estadoId==1){
+                        $color = "warning";
+                        $mensaje = "Pendiente";
+                      }
+                      if($estadoId==2){
+                        $color = "danger";
+                        $mensaje = "Cancelado";
+                      }
+                      if($estadoId==3){
+                        $color = "success";
+                        $mensaje = "Realizado";
+                      }
+                      ?>
+                      <td><span class="label label-<?php echo $color ?>"><?php echo $mensaje ?></span></td>
+                      <?php
 
                       $tipoMon = TipoMonitoreoDAO::buscar($ag->getId_tipo_monitoreo());
                       $tipoMon = $tipoMon->getNombre_monitoreo();

@@ -7,7 +7,7 @@
     require_once ($rootDir . "/DAO/AgendaDAO.php");
     require_once ($rootDir . "/DAO/UsuarioDAO.php");
     require_once ($rootDir . "/DAO/AccesoDAO.php");
-    require_once ($rootDir . "/DAO/ReporteVidesDAO.php");
+    require_once ($rootDir . "/DAO/ReporteVidesDAO.php");    
 
     $acceso = $_SESSION['acceso'];
     $acceso = unserialize($acceso);
@@ -27,7 +27,9 @@
     $nuevoId = ReporteVidesDAO::lastId() + 1;
     $idAgenda = $_POST['idAg'];
     $idUsuario = $usuario->getId_usuario();
-
+    $agenda = AgendaDAO::buscar($idAgenda);
+    $agenda->setId_estado_a(3);
+    AgendaDAO::actualizar($agenda);
     $reporte = new ReporteVides($nuevoId, $fRealizada, $hInicial, $hFinal, $temp, $humedad, $viento, $idAgenda, $idUsuario, $carpeta, $url, $vehiculo);
 
     if( ReporteVidesDAO::agregar($reporte) ){
