@@ -3,8 +3,8 @@
   if (!isset($rootDir)) $rootDir = $_SERVER['DOCUMENT_ROOT'];
   require_once($rootDir . '/DAO/AccesoDAO.php'); 
   require_once($rootDir . '/DAO/UsuarioDAO.php'); 
-  
-  require_once($rootDir . '/DAO/AgendaDAO.php'); 
+  require_once($rootDir . '/DAO/AgendaDAO.php');   
+  require_once($rootDir . '/DAO/TipoMonitoreoDAO.php'); 
 
   $nombres="";
   if(isset($_SESSION['acceso'])){
@@ -30,19 +30,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Vides - Home</title>
-  <!-- Tell the browser to be responsive to screen width -->
+
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.css">
-
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.css">  
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-
 <body class="hold-transition skin-purple sidebar-mini">
   <div class="wrapper">
 
@@ -66,39 +63,53 @@
               <div class="box-header">
                 <h3 class="box-title">Agenda </h3>
                 <a class="btn btn-primary" href="nuevaEntrada.php">Nueva Entrada</a>
-                <div class="box-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <div class="input-group-btn">
-                      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                    </div>
-                  </div>
-                </div>
               </div>
               <div class="box-body table-responsive no-padding">
-                <table id="example" class="striped grey lighten-2 table table-striped table-bordered" cellspacing="0"
-                  width="100%">
+                <table id="tabla1" class="table table-bordered table-hover" cellspacing="0"  width="100%">               
                   <thead>
                     <tr class="amber darken-3">
-                      <th>Nombre Asignatura</th>
-                      <th>Asignatura/sección</th>
-                      <th>Rut Alumno</th>
-                      <th>Fecha Inasistencia</th>
-                      <th>Acción</th>
+                      <th>Id</th>
+                      <th>Fecha Creacion</th>
+                      <th>Fecha Programada</th>
+                      <th>Estado</th>
+                      <th>Tipo Monitoreo</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php  
                         $agendas = AgendaDAO::readAll();
-
+                        $color = "success";
+                        $mensaje = "pendiente";
                         foreach($agendas as $a){
-                          echo $a->getId_agenda();
+                        if($a->getId_estado_a()==1){
+                          $color = "warning";
+                          $mensaje = "Pendiente";
+                        }
+                        if($a->getId_estado_a()==2){
+                          $color = "danger";
+                          $mensaje = "Cancelado";
+                        }
+                        if($a->getId_estado_a()==3){
+                          $color = "success";
+                          $mensaje = "Realizado";
+                        }
                     ?>
                     <tr>
                       <td><?php echo $a->getId_agenda() ?></td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="label label-success">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                      <td><?php $fe = $a->getFecha_creacion()."";
+                                $date = date_create($fe);
+                                echo date_format($date, 'd-m-Y');
+                      ?></td>
+                      <td><?php $fe = $a->getFecha_programada()."";
+                                $date = date_create($fe);
+                                echo date_format($date, 'd-m-Y');
+                      ?></td>
+                      <td><span class="label label-<?php echo $color ?>"><?php echo $mensaje ?></span></td>
+                      <td><?php  
+                          $tipo = TipoMonitoreoDAO::buscar($a->getId_tipo_monitoreo());
+                          echo $tipo->getNombre_monitoreo();
+                      ?>
+                      </td>
                     </tr>
                         <?php  } ?>
                   </tbody>
@@ -119,14 +130,22 @@
     <div class="control-sidebar-bg">
     </div>
   </div>
-  <script src="../../bower_components/jquery/dist/js/jquery.min.js"></script>
-  <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../../plugins/datatables/data.js"></script>
 
-  <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="../../plugins/datatables/script.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../../bower_components/dist/js/adminlte.min.js"></script>
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<script src="../../bower_components/datatables.net/js/traductor.js"></script>
+<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../../dist/js/demo.js"></script>
+<script>
+
+  $(document).ready( function () {
+    $('#tabla1').DataTable();
+} );
+</script>
 
 </body>
 
