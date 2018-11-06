@@ -75,35 +75,29 @@
             <div class="box-header with-border">
               <h3 class="box-title">Agendar</h3>
             </div>
-            <form role="form" method="POST" action="">
+            <form role="form" method="POST" action="../../Controlador/cNuevaEntrada.php">
               <div class="box-body">
                 <div class="form-group">
                   <label for="fecha1">Fecha Creación <?php echo $fecha ?></label>
                 </div>
                 <div class="form-group">
                   <label for="fecha1">Fecha Planificación</label>
-                  <input type="date" class="form-control" id="fecha1" name="txtFechaR" value="">
+                  <input type="date" class="form-control" id="fecha1" name="txtFechaR" value="" required="" >
                 </div>
                 <div class="form-group">
                   <label for="descripcion">Descripción</label>
-                  <input type="text" class="form-control" id="descripcion" placeholder="Comentarios" name="txtDescripcion" require>
+                  <input type="text" class="form-control" id="descripcion" placeholder="Comentarios" name="txtDescripcion" required="">
                 </div>
                 <div class="form-group">
                   <label>Tipo Monitoreo</label>
 
-                    <select class="custom-select d-block w-100" id="tipoUsuario" name="txtTipoUsuario" required="">
+                    <select class="form-control"  id="tipoReporte" name="txtTipoReporte" required="">
                       <?php 
                         $tipoM = TipoMonitoreoDAO::readAll();
                         foreach($tipoM as $t){    ?>  
                           <option value="<?php echo $t->getId_tipo_monitoreo() ?>" ><?php echo $t->getNombre_monitoreo() ?> </option>                                                      
                        <?php } ?>                                            
                     </select>
-
-
-                  <select class="form-control"  name="txtEstado" require>
-                    <option>Fertilizandte</option>
-                    <option>Scan Dron</option>
-                  </select>
                 </div>
               </div>
               <div class="box-footer">
