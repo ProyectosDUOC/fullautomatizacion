@@ -114,7 +114,7 @@
                             echo $piloto->getNombre();
                       ?></td>
                       <td>
-                        <button type="submit" name="o<?php echo $r-getId_reporte() ?>" class="btn btn-success"  >Ver</button>
+                        <a href="verReporte.php?id=<?php echo $r->getId_reporte() ?>" class="btn btn-success"  >Ver</a>
                       </td>
                     </tr>
                         <?php  } ?>
