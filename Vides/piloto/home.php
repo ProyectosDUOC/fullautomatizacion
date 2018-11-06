@@ -43,6 +43,7 @@
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.css">
 
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
@@ -70,16 +71,11 @@
               <div class="box-header">
                 <h3 class="box-title">Agendas</h3>
                 <div class="box-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-                    <div class="input-group-btn">
-                      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
+                <table id="tabla1" class="table table-bordered table-hover" cellspacing="0"  width="100%">
+                <thead>
                   <tr>
                     <th>ID Agenda</th>
                     <th>Fecha Creacion</th>
@@ -90,7 +86,9 @@
                     <th>Usuario</th>
                     <th>Generar Reporte</th>
                   </tr>
-                  
+                </thead>
+
+                  <tbody>
                   <?php 
                   foreach ($agendas as $ag) 
                   {                      
@@ -129,6 +127,8 @@
                       echo "</tr>";
                   }
                   ?>
+                  
+                </tbody>
                 </table>
               </div>
             </div>
@@ -146,9 +146,19 @@
     <div class="control-sidebar-bg"></div>
   </div>
   <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../../dist/js/adminlte.min.js"></script>
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<script src="../../bower_components/datatables.net/js/traductor.js"></script>
+<script src="../../dist/js/adminlte.min.js"></script>
+<script src="../../dist/js/demo.js"></script>
+<script>
+
+  $(document).ready( function () {
+    $('#tabla1').DataTable();
+} );
+</script>
 </body>
 </html>
