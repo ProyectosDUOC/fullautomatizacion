@@ -16,13 +16,8 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-<<<<<<< HEAD
-              <img src="../../dist/img/user-benjamin.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $nombres ?></span>
-=======
               <img src="../../dist/img/user-Seba.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"> <?php echo $nombres ?></span>
->>>>>>> c8b3e965568dd32af896ea94ad379d4c00deef95
+              <span class="hidden-xs"><?php echo $nombres ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -30,12 +25,8 @@
                 <img src="../../dist/img/user-Seba.jpg" class="img-circle" alt="User Image">
 
                 <p>
-<<<<<<< HEAD
-                <?php echo $nombres ?> - Piloto
-                  <small>Member since Nov. 2012</small>
-=======
-                  <?php echo $nombres ?>
->>>>>>> c8b3e965568dd32af896ea94ad379d4c00deef95
+
+                  <?php echo $nombres ?> - Piloto Dron
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -62,11 +53,8 @@
       </div>
       <div class="pull-left info">
         <p><?php echo $nombres ?></p>
-<<<<<<< HEAD
-        <a href="#"><i class="fa fa-circle text-success"></i> Piloto</a>
-=======
         <a href="#"><i class="fa fa-circle text-success"></i> Piloto Dron</a>
->>>>>>> c8b3e965568dd32af896ea94ad379d4c00deef95
+
       </div>
     </div>
 
