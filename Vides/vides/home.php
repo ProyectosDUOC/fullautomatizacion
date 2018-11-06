@@ -59,7 +59,6 @@
           <li class="active">Reportes</li>
         </ol>
       </section>
-      </section>
       <section class="content container-fluid">
         <div class="row">
           <div class="col-xs-12">

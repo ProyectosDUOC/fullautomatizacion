@@ -81,7 +81,6 @@ class DetalleReunionDAO {
                 $nuevo = new DetalleReunion($c['id_detalle_reunion'],
                             $c['id_reunion'],
                             $c['id_usuario']);
-            return $nuevo;
             array_push($pila, $nuevo);
         }
         return $pila;

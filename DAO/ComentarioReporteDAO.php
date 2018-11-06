@@ -57,8 +57,7 @@ class ComentarioReporteDAO {
                             $c['fecha_comentario'],
                             $c['comentario'], 
                             $c['activo'],
-                            $c['id_reporte']);
-        return $nuevo;        
+                            $c['id_reporte']);      
             array_push($pila, $nuevo);
         }
         return $pila;

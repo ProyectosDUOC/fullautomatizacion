@@ -37,7 +37,6 @@ class EstadoAgendaDAO {
         foreach ($ba as $c) {
                  $nuevo = new EstadoAgenda($c['id_estado_a'],
                                            $c['nombre_estado']);
-            return $nuevo;
             array_push($pila, $nuevo);
         }
         return $pila;
