@@ -58,8 +58,8 @@ CREATE TABLE reporte_vides
   (
     id_reporte          INTEGER NOT NULL ,
     fecha_realizada     DATETIME NOT NULL ,
-    hora_inicial        DATETIME ,
-    hora_final          DATETIME ,
+    hora_inicial        VARCHAR(40) ,
+    hora_final          VARCHAR(40) ,
     temperatura         INTEGER ,
     humedad             INTEGER ,
     velocidad_viento    INTEGER ,
