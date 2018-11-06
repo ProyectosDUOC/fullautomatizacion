@@ -32,7 +32,7 @@ class ReporteVidesDAO {
         $cc = DB::getInstancia();
         $stSql = "SELECT * FROM reporte_vides WHERE id_reporte=:id_reporte";
         $rs = $cc->db->prepare($stSql);
-        $rs->execute(array('id_acceso' => $id));
+        $rs->execute(array('id_reporte' => $id));
         $ba = $rs->fetch();
           $nuevo = new ReporteVides($ba['id_reporte'],
                             $ba['fecha_realizada'],
