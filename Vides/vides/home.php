@@ -65,7 +65,7 @@
                 <a class="btn btn-primary" href="nuevaEntrada.php">Nueva Entrada</a>
               </div>
               <div class="box-body table-responsive no-padding">
-                <table id="tabla1" class="table table-bordered table-hover">               
+                <table id="tabla1" class="table table-bordered table-hover" cellspacing="0"  width="100%">               
                   <thead>
                     <tr class="amber darken-3">
                       <th>Id</th>
@@ -134,7 +134,10 @@
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+
 <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<script src="../../bower_components/datatables.net/js/traductor.js"></script>
 <script src="../../dist/js/adminlte.min.js"></script>
 <script src="../../dist/js/demo.js"></script>
 <script>
