@@ -129,4 +129,13 @@ class ReporteVidesDAO {
         }
         return $pila;
     }
+
+    public static function lastId(){
+        $cc = DB::getInstancia();
+        $stSql = "SELECT * FROM reporte_vides order by id_reporte desc limit 1";
+        $rs = $cc->db->prepare($stSql);
+        $rs->execute();
+        $ba = $rs->fetch();
+        return $ba['id_reporte'];
+    }
 }
