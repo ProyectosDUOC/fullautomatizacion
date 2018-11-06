@@ -17,7 +17,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/user-benjamin.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $nombres ?></span>
+              <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -25,8 +25,8 @@
                 <img src="../../dist/img/user-benjamin.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                <?php echo $nombres ?>
-                  <small>Sistema de Vides</small>
+                  Alexander Pierce - Web Developer
+                  <small>Member since Nov. 2012</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -35,7 +35,7 @@
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../../index.html" class="btn btn-danger btn-flat">Cerrar Sesión</a>
+                  <a href="#" class="btn btn-danger btn-flat">Cerrar Sesión</a>
                 </div>
               </li>
             </ul>
