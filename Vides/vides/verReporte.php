@@ -7,7 +7,6 @@
   require_once($rootDir . '/DAO/ComentarioReporteDAO.php');
 
 
-
   $nombres="";
   $reporte;
 
@@ -88,10 +87,20 @@
                       <?php echo $reporte->getId_reporte() ?>
                     </td>
                   </tr>
+                  
+                  <tr>
+                    <td>Tipo</td>
+                    <td>
+                      <?php echo $reporte->getHora_inicial() ?>
+                    </td>
+                  </tr>
                   <tr>
                     <td>Fecha realizado</td>
                     <td>
-                      <?php echo $reporte->getFecha_realizada() ?>
+                      <?php $fe = $reporte->getFecha_realizada()."";
+                            $date = date_create($fe);
+                            echo date_format($date, 'd-m-Y');
+                      ?>
                     </td>
                   </tr>
                   <tr>
@@ -109,19 +118,19 @@
                   <tr>
                     <td>Temperatura °C</td>
                     <td>
-                      <?php echo $reporte->getTemperatura() ?>
+                      <?php echo $reporte->getTemperatura() ."°C" ?>
                     </td>
                   </tr>
                   <tr>
                     <td>Humedad %</td>
                     <td>
-                      <?php echo $reporte->getHumedad() ?>
+                      <?php echo $reporte->getHumedad() . "%" ?>
                     </td>
                   </tr>
                   <tr>
                     <td>Velocidad del viento (km/h)</td>
                     <td>
-                      <?php echo $reporte->getVelocidad_viento() ?>
+                      <?php echo $reporte->getVelocidad_viento() . "(km/h)"?>
                     </td>
                   </tr>
                   <tr>
@@ -131,7 +140,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>Usuario</td>
+                    <td>Piloto encargado</td>
                     <td>
                       <?php echo UsuarioDAO::buscar($reporte->getId_usuario())->getNombre() ?>
                     </td>
@@ -145,7 +154,8 @@
                   <tr>
                     <td>URL</td>
                     <td>
-                      <?php echo $reporte->getURL() ?>
+                      <a href=" <?php echo $reporte->getURL() ?>" target="_blink"> <?php echo $reporte->getURL() ?></a>
+                     
                     </td>
                   </tr>
                 </table>
@@ -153,7 +163,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-12 col-md-6 ">
         <div class="box box-success">
             <div class="box-header">
               <i class="fa fa-comments-o"></i>
@@ -177,6 +187,8 @@
                   if($usu->getId_tipo_u()==3){
                     $foto="../../dist/img/user-Paty.jpg";
                   }
+                  $tiempo = $c->getFecha_comentario();
+                  
               ?>
 
               <div class="item">
@@ -184,7 +196,7 @@
 
                 <p class="message">
                   <a href="#" class="name">
-                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> </small>
+                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php echo $tiempo ?> </small>
                    <?php echo $nombre ?>
                   </a>
                   <?php echo $c->getComentario(); ?>
@@ -198,7 +210,7 @@
               <form method="post" action="../../Controlador/cComentario.php">
                 <div class="input-group">
                   <input style="display:none" name="txtIdR" value="<?php echo $reporte->getId_reporte() ?>">
-                  <input class="form-control" name="txtComentario" placeholder="Escribe tu comentario...">
+                  <input class="form-control" name="txtComentario" placeholder="Escribe tu comentario..." requiered="">
 
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>

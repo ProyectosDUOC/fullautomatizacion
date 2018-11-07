@@ -85,7 +85,7 @@ class ComentarioReporteDAO {
 
     public static function buscarIdReporte($idR) { 
         $cc =DB::getInstancia();
-        $stSql = "SELECT * FROM comentario_reporte";
+        $stSql = "SELECT * FROM comentario_reporte order by fecha_comentario";
         $rs = $cc->db->prepare($stSql);
         $rs->execute();
         $ba = $rs->fetchAll();

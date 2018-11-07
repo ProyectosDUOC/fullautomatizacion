@@ -21,6 +21,7 @@
     $m = $todayh["mon"];
     $y = $todayh["year"];
 
+    $hoy = date("Y-m-d H:i:s");   // este entrega todos los datos.
     
     $acceso = $_SESSION['acceso'];
     $acceso = unserialize($acceso);
@@ -29,8 +30,8 @@
 
     $ultima = ComentarioReporteDAO::ultimoId();
     $idNueva = $ultima + 1;
-    $fecha_creacion = "$y-$m-$d";
-
+    //$fecha_creacion = "$y-$m-$d";
+    $fecha_creacion = $hoy;
 
     $idR = $_POST['txtIdR'];
     $comentari = $_POST['txtComentario'];

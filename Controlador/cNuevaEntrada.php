@@ -28,7 +28,9 @@
 
     $ultima = AgendaDAO::lastValue();
     $idNueva = $ultima->getId_agenda() + 1;
-    $fecha_creacion = "$y-$m-$d";
+    
+    $hoy = date("Y-m-d H:i:s");  
+    $fecha_creacion = $hoy;
     $fecha_programada = $_POST['txtFechaR'];
     $descripcion = $_POST['txtDescripcion'];
     $id_tipo_monitoreo = $_POST['txtTipoReporte'];

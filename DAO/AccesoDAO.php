@@ -77,8 +77,7 @@ class AccesoDAO {
                 . " WHERE id_acceso=:id_acceso";
         $rs = $cc->db->prepare($stSql);
         $params = self::getParams($nuevo);      
-        return $rs->execute($params);
-        
+        return $rs->execute($params);        
     }
 
     public static function eliminar($nuevo) {
