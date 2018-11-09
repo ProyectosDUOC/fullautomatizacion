@@ -1,21 +1,10 @@
 <?php
 
-/*
-CREATE TABLE usuario
-  (
-    id_usuario INTEGER NOT NULL AUTO_INCREMENT,
-    rut        VARCHAR (11) NOT NULL ,
-    nombre     VARCHAR (30) NOT NULL,
-    apellido   VARCHAR (30) NOT NULL,
-    celular    VARCHAR (15) NOT NULL,
-    domicilio  VARCHAR (100) NOT NULL,
-    email      VARCHAR (60) NOT NULL,
-    activo     INTEGER NOT NULL,
-    id_tipo_u  INTEGER NOT NULL,
-    PRIMARY KEY(id_usuario)
-  ) ;
- */
-class Usuario {
+abstract class AbstractFactoryMethod{
+    abstract function nombreCompleto();
+}
+
+class Usuario extends AbstractFactoryMethod {
     private $id_usuario;
     private $rut;
     private $nombre;
@@ -25,6 +14,7 @@ class Usuario {
     private $email;
     private $activo;
     private $id_tipo_u;
+
     function __construct($id_usuario, $rut, $nombre, $apellido, $celular, $domicilio, $email, $activo, $id_tipo_u) {
         $this->id_usuario = $id_usuario;
         $this->rut = $rut;
@@ -108,7 +98,10 @@ class Usuario {
         $this->id_tipo_u = $id_tipo_u;
     }
 
-function __toString(){
+    function __toString(){
         return print_r($this,true);
+    }
+    function nombreCompleto(){        
+        return $this->nombre . " " . $this->apellido;
     }
 }

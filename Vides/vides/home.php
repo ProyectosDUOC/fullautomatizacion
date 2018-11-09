@@ -16,7 +16,8 @@
 
     if($usuario->getId_tipo_u()==1){ //Cliente 1
            
-      $nombres = $usuario->getNombre() . " " . $usuario->getApellido();            
+      $nombres = $usuario->nombreCompleto();
+      //$nombres = $usuario->getNombre() . " " . $usuario->getApellido();            
     }
   }else{
     header('Location: ../../index.html');

@@ -1,17 +1,5 @@
 <?php
 
-/*
-CREATE TABLE comentario_reporte
-  (
-    id_comentario    INTEGER NOT NULL AUTO_INCREMENT,
-    id_usuario       INTEGER NOT NULL ,
-    fecha_comentario DATETIME NOT NULL ,
-    comentario NVARCHAR (300) NOT NULL ,
-    activo     INTEGER NOT NULL ,
-    id_reporte INTEGER NOT NULL,
-    PRIMARY KEY(id_comentario)
-  ) ;
- */
 class ComentarioReporte {
     private $id_comentario;
     private $id_usuario;
@@ -78,6 +66,28 @@ class ComentarioReporte {
 
     function __toString(){
         return print_r($this,true);
+    }
+
+}
+
+class ComentarioAdapter{
+    private $comentario;
+
+    function __construct(ComentarioReporte $co){
+        $this->comentario = $co;
+    }
+
+    function getHora(){
+        $fecha =new DateTime($this->comentario->getFecha_comentario());
+        return $fecha->format('H:i:s');
+    }
+    function getFecha(){
+        $fecha =new DateTime($this->comentario->getFecha_comentario());
+        return $fecha->format('d-m-Y');
+        
+    }
+    function getComentario(){
+        return $this->comentario->getComentario();
     }
 
 }

@@ -176,6 +176,10 @@
                 foreach($comentario as $c){
                   $foto="";
 
+
+                  //Uso de comentario Adapter
+                  $cAdapter =new ComentarioAdapter($c);
+
                   $usu = UsuarioDAO::buscar($c->getId_usuario());
                   $nombre = $usu->getNombre();
                   if($usu->getId_tipo_u()==1){
@@ -196,10 +200,10 @@
 
                 <p class="message">
                   <a href="#" class="name">
-                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php echo $tiempo ?> </small>
+                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> <?php echo $cAdapter->getFecha() ?> <br> <?php echo $cAdapter->getHora() ?>  </small>
                    <?php echo $nombre ?>
                   </a>
-                  <?php echo $c->getComentario(); ?>
+                  <?php echo $cAdapter->getComentario() ?>
                 </p>
               </div>
                 <?php } ?>
