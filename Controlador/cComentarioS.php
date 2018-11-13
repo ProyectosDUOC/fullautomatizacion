@@ -7,7 +7,7 @@
     require_once ($rootDir . "/DAO/AgendaDAO.php");
     require_once ($rootDir . "/DAO/UsuarioDAO.php");
     require_once ($rootDir . "/DAO/AccesoDAO.php");
-    require_once ($rootDir . "/DAO/ComentarioReporteDAO.php");
+    require_once ($rootDir . "/DAO/ComentarioSDAO.php");
 
 
     $now = time();
@@ -28,9 +28,8 @@
     $usuario = $_SESSION['usuario'];
     $usuario = unserialize($usuario);
 
-    $ultima = ComentarioReporteDAO::ultimoId();
+    $ultima = ComentarioSDAO::ultimoId();
     $idNueva = $ultima + 1;
-    //$fecha_creacion = "$y-$m-$d";
     $fecha_creacion = $hoy;
 
     $idR = $_POST['txtIdR'];
@@ -40,19 +39,19 @@
 
     if($usuario->getId_tipo_u()==1){
         //cliente 1
-        $redireccion="../Vides/vides/verReporte.php?id=".$idR;
+        $redireccion="../Vides/vides/verSoluciones.php?id=".$idR;
     }
     if($usuario->getId_tipo_u()==2){
         //piloto 1
-        $redireccion="../Vides/piloto/verReporte.php?id=".$idR;
+        $redireccion="../Vides/piloto/verSoluciones.php?id=".$idR;
     }
     if($usuario->getId_tipo_u()==3){
-        $redireccion="../Vides/tecnico/verReporte.php?id=".$idR;
+        $redireccion="../Vides/tecnico/verSoluciones.php?id=".$idR;
     }
 
-    $come = new ComentarioReporte($idNueva, $idUsuario, $fecha_creacion, $comentari,1,$idR);
+    $come = new ComentarioS($idNueva, $idUsuario, $fecha_creacion, $comentari,1,$idR);
    
-    if(ComentarioReporteDAO::agregar($come)){
+    if(ComentarioSDAO::agregar($come)){
 
 
         echo '<script type="text/javascript">
@@ -64,7 +63,7 @@
     else {   
         echo '<script type="text/javascript">
         alert("Error");
-        window.location="../Vides/vides/home.php"
+        window.location="'.$redireccion.'"
         </script>';
     }
     

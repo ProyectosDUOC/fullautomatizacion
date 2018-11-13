@@ -119,6 +119,28 @@ CREATE TABLE vehiculo_volador
   ) ;
 
 
+CREATE TABLE solucion
+  (
+    id_solucion  INTEGER NOT NULL,
+    id_usuario  INTEGER NOT NULL ,
+    fecha_solucion   DATETIME NOT NULL ,
+    nombre_carpeta      VARCHAR (100) ,
+    URL                 VARCHAR (200) ,
+    descripcion   VARCHAR(300),    
+    PRIMARY KEY(id_solucion)
+  ) ;
+
+CREATE TABLE comentario_s
+  (
+    id_c    INTEGER NOT NULL,
+    id_usuario       INTEGER NOT NULL ,
+    fecha_comentario DATETIME NOT NULL ,
+    comentario NVARCHAR (300) NOT NULL ,
+    activo     INTEGER NOT NULL ,
+    id_solucion INTEGER NOT NULL,
+    PRIMARY KEY(id_c)
+  ) ;
+
 ALTER TABLE acceso ADD CONSTRAINT acceso_usuario_FK FOREIGN KEY ( id_usuario ) REFERENCES usuario ( id_usuario ) ;
 
 ALTER TABLE agenda ADD CONSTRAINT agen_estag_FK FOREIGN KEY ( id_estado_a ) REFERENCES estado_agenda ( id_estado_a ) ;

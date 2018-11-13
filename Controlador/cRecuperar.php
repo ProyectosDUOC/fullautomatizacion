@@ -6,16 +6,10 @@
     }
     require_once ($rootDir . "/DAO/AccesoDAO.php");
     require_once ($rootDir . "/DAO/UsuarioDAO.php");
+    
+    require_once ($rootDir . "/Controlador/CorreoEnviar.php");
 
-        
-    use PHPMailer\PHPMailer\Exception;
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-
-    require '../PHPMailer/PHPMailer.php';
-    require '../PHPMailer/POP3.php';
-    require '../PHPMailer/SMTP.php';
-    require '../PHPMailer/Exception.php';
+ 
         
     $correo = $_POST['txtCorreo'];
     $passO = "1234";
@@ -45,43 +39,34 @@
         //$acces->getPassword($pass);
         //AccesoDAO::actualizar($acces);
        
-        $mail = new PHPMailer(true);
-        try {
-            $mensaje = "Estimado Usuario se ha solicitado la recuperación de su contraseña <br><br> <strong>Usuario</strong> " .
+        
+            $msj = " Se ha solicitado la recuperación de su contraseña <br><br> <strong>Usuario</strong> " .
                         $acces->getUsername()  . "<br> <strong>Clave</strong> " . $passO ;
-            $asunto = "Recuperar Contraseña Full Automatización";
-            $mail->isSMTP(); // Set mailer to use SMTP xd
-            $mail->CharSet = "UTF-8";
-            $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true; // Enable SMTP authentication
-            $mail->Username = 'webscontactos@gmail.com'; // SMTP username
-            $mail->Password = 'abcd14abcd'; // SMTP password
-            $mail->SMTPSecure = 'ssl';
-            $mail->IsHTML(true); // Enable TLS encryption, `ssl` also accepted
-            $mail->Port = 465; // TCP port to connect to
 
-            $mail->setFrom('webscontactos@gmail.com', 'Contacto Web Full Automatizacion');       
 
-            $mail->addAddress($correo);
+            $nombre = $user->getNombre()." ".$user->getApellido();
             
-            $mail->Subject = $asunto;
-            $mail->Body = $mensaje;
-        } catch (Exception $e) {
-            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-        }
+            $mens = CorreoEnviar::mensaje(" ".$nombre," ". $msj );
 
-        //correo al que lo envio
-       
-        if ($mail->Send()) {
+            $asunto = "Recuperar Contraseña Full Automatización";
+           
+
+            $mail = CorreoEnviar::Enviar($correo, $asunto, $mens);
+        if ($mail) {
                     echo '<script type="text/javascript">
                         alert("Su mensaje ha sido enviado");
-                      
+                        window.location="../index.html"
                    </script>';
-                } else {
+        } else {
                     echo '<script type="text/javascript">
                 alert("NO ENVIADO, intentar de nuevo");
-               
+                window.location="../index.html"
                 </script>';            
        
             }
+    }else{
+        echo '<script type="text/javascript">
+        alert("NO ENVIADO, intentar de nuevo");
+        window.location="../index.html"
+        </script>';
     }

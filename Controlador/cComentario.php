@@ -64,7 +64,7 @@
     else {   
         echo '<script type="text/javascript">
         alert("Error");
-        window.location="../Vides/vides/home.php"
+        window.location="'.$redireccion.'"
         </script>';
     }
     

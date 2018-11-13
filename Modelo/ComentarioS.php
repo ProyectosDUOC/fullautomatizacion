@@ -1,23 +1,23 @@
 <?php
 
-class ComentarioReporte {
-    private $id_comentario;
+class ComentarioS{
+    private $id_c;
     private $id_usuario;
     private $fecha_comentario;
     private $comentario;
     private $activo;
-    private $id_reporte;
+    private $id_solucion;
     
-    function __construct($id_comentario=0, $id_usuario=0, $fecha_comentario=null, $comentario="", $activo=0, $id_reporte=0) {
-        $this->id_comentario = $id_comentario;
+    function __construct($id_c=0, $id_usuario=0, $fecha_comentario=null, $comentario="", $activo=0, $id_solucion=0) {
+        $this->id_c = $id_c;
         $this->id_usuario = $id_usuario;
         $this->fecha_comentario = $fecha_comentario;
         $this->comentario = $comentario;
         $this->activo = $activo;
-        $this->id_reporte = $id_reporte;
+        $this->id_solucion = $id_solucion;
     }
-    function getId_comentario() {
-        return $this->id_comentario;
+    function getId_c() {
+        return $this->id_c;
     }
 
     function getId_usuario() {
@@ -36,12 +36,12 @@ class ComentarioReporte {
         return $this->activo;
     }
 
-    function getId_reporte() {
-        return $this->id_reporte;
+    function getId_solucion() {
+        return $this->id_solucion;
     }
 
-    function setId_comentario($id_comentario) {
-        $this->id_comentario = $id_comentario;
+    function setId_c($id_c) {
+        $this->id_c = $id_c;
     }
 
     function setId_usuario($id_usuario) {
@@ -60,8 +60,8 @@ class ComentarioReporte {
         $this->activo = $activo;
     }
 
-    function setId_reporte($id_reporte) {
-        $this->id_reporte = $id_reporte;
+    function setId_solucion($id_solucion) {
+        $this->id_solucion = $id_solucion;
     }
 
     function __toString(){
@@ -70,19 +70,19 @@ class ComentarioReporte {
 
 }
 
-class ComentarioAdapter{
-    private $comentario;
+class ComentarioSAdapter{
+    private $comentarioS;
 
-    function __construct(ComentarioReporte $co){
-        $this->comentario = $co;
+    function __construct(ComentarioS $co){
+        $this->comentarioS = $co;
     }
 
     function getHora(){
-        $fecha =new DateTime($this->comentario->getFecha_comentario());
+        $fecha =new DateTime($this->comentarioS->getFecha_comentario());
         return $fecha->format('H:i:s');
     }
     function getFecha(){
-        $fecha =new DateTime($this->comentario->getFecha_comentario());
+        $fecha =new DateTime($this->comentarioS->getFecha_comentario());
         return $fecha->format('d-m-Y');
         
     }

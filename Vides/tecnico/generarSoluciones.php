@@ -6,10 +6,8 @@ if (!isset($rootDir)) {
 
 require_once $rootDir . '/DAO/AccesoDAO.php';
 require_once $rootDir . '/DAO/UsuarioDAO.php';
-require_once $rootDir . '/DAO/AgendaDAO.php';
-require_once $rootDir . '/DAO/TipoMonitoreoDAO.php';
-require_once $rootDir . '/DAO/EstadoAgendaDAO.php';
-require_once $rootDir . '/DAO/VehiculoVoladorDAO.php';
+
+require_once $rootDir . '/DAO/SolucionDAO.php';
 
 $nombres;
 $idAgenda = -1;
@@ -20,16 +18,12 @@ if (isset($_SESSION['acceso'])) {
     $acceso = unserialize($acceso);
     $usuario = $_SESSION['usuario'];
     $usuario = unserialize($usuario);
-
-    if ($usuario->getId_tipo_u() == 2) { //Piloto 2
+    $id = 0;
+    $id = SolucionDAO::ultimoId()+ 1;
+    if ($usuario->getId_tipo_u() == 3) { //Piloto 2
 
         $nombres = $usuario->getNombre() . " " . $usuario->getApellido();
-        $drones = VehiculoVoladorDAO::readAll();
-
-        if (isset($_GET['id'])) {
-            $idAgenda = $_GET['id'];
-            $agenda = AgendaDAO::buscar($idAgenda);
-        }
+       
     }
 } else {
     header('Location: ../../index.html');
@@ -69,16 +63,16 @@ if (isset($_SESSION['acceso'])) {
       
       <section class="content-header">
         <h1>
-          Vides - Generar Reporte
+          Vides - Crear Solución
           <small>Sistema de gestión</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Piloto</a></li>
-          <li class="active">Generar Reporte</li>
+          <li class="active">Crear Solución</li>
         </ol>
       </section>
 
-      <form role="form" method="POST" action="../../Controlador/cNuevoReporte.php">
+      <form role="form" method="POST" action="../../Controlador/cSolucion.php">
         <section class="content">
         <div class="row">
           <!-- left column -->
@@ -86,73 +80,23 @@ if (isset($_SESSION['acceso'])) {
             <!-- general form elements -->
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Informacion de vuelo</h3>
+                <h3 class="box-title">Informacion de Solución  ID <?php echo $id ?></h3>
               </div>
               <div class="box-body">
-
+                
                 <div class="form-group">
-                  <label>Vehiculo Volador</label>
-                  <select name="vehiculo" class="form-control">
-                    <?php
-                    foreach ($drones as $drone){
-                      $idDrone = $drone->getId_vehiculo_volador();
-                      $nDrone = $drone->getModelo();
-                      echo "<option required value='$idDrone'> $nDrone </option>";
-                    }
-                    ?>
-                  </select>
-                </div>
-
-                <div class="bootstrap-timepicker">
-                    <div class="form-group">
-                        <label>Hora inicial:</label>
-                        <div class="input-group">
-                            <input name="hInicial" type="text" class="form-control timepicker" required="">
-                            <div class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bootstrap-timepicker">
-                    <div class="form-group">
-                        <label>Hora final:</label>
-                        <div class="input-group">
-                            <input name="hFinal" type="text" class="form-control timepicker" required="">
-                            <div class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Fecha Programada</label>
+                    <label>Fecha Solución</label>
                     <div class="input-group date">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <?php                               
-                                $fe = $agenda->getFecha_programada()."";
-                                $date = date_create($fe);
-                                $fecha = date_format($date, 'd-m-Y');
-                                echo $fecha;
-                        ?>
+                        <span><?php echo $hoy = date("d-m-Y");   ?></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Fecha Realizada</label>
-                    <div class="input-group date">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-
-                        <input name="fRealizada" type="date" value="" class="form-control pull-right" required=""> 
-                    </div>
+                  <label>Descripción</label>
+                  <textarea class="form-control" rows="3" required=""  name="descripcion" placeholder="Descripción ..."></textarea>
                 </div>
-
-                <input type="hidden" name="idAg" value="<?php echo $idAgenda ?>" >
-
               </div>
             </div>
 
@@ -166,37 +110,7 @@ if (isset($_SESSION['acceso'])) {
                 </div>
                 <div class="box-body">
                     <div class="form-group">
-                        <label>Temperatura °C :</label>
-                        <div class="input-group">
-                            <input name="temp" type="text" class="form-control" required="">
-                            <div class="input-group-addon">
-                                <i class="fa fa-thermometer-empty"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Humedad % :</label>
-                        <div class="input-group">
-                            <input name="humedad" type="text" max="100" class="form-control" required="">
-                            <div class="input-group-addon">
-                                <i class="fa fa-cloud"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Velocidad Viento m/s:</label>
-                        <div class="input-group">
-                            <input name="viento" type="text" class="form-control" required="">
-                            <div class="input-group-addon">
-                                <i class="fa fa-align-left"></i>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                      <label>URL Fotos</label>
+                      <label>URL Solución</label>
                       <div class="input-group">
                           <div class="input-group-addon">
                               <i class="fa fa-laptop"></i>
@@ -225,11 +139,11 @@ if (isset($_SESSION['acceso'])) {
           <div class="col-md-6 col-md-offset-3">
             <div class="box box-info">
               <div class="box-header with-border">
-                <h3 class="box-title">Enviar Reporte</h3>
+                <h3 class="box-title">Crear Solución</h3>
               </div>
               <div class="box-body">
                 <a href="home.php" class="btn btn-default">Cancelar</a>
-                <button type="submit" class="btn btn-info pull-right">Confirmar</button>
+                <button type="submit" class="btn btn-info pull-right">Crear</button>
               </div>
             </div>
           </div>

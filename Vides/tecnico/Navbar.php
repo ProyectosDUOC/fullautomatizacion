@@ -60,7 +60,17 @@
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">Menu</li>
-      <li class="active"><a href="home.php"><i class="fa fa-book"></i> <span>Reportes</span></a></li>
+     <li class="treeview active">
+        <a href="#"><i class="fa fa-book"></i> <span>Reportes</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="home.php">Ver Reuniones</a></li>
+        </ul>
+       
+      </li>     
       <li class="treeview active">
         <a href="#"><i class="fa fa-calendar"></i> <span>Reunión</span>
           <span class="pull-right-container">
@@ -69,6 +79,17 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="reunion.php">Ver Reuniones</a></li>
+        </ul>
+      </li>    
+      <li class="treeview active">
+        <a href="#"><i class="fa fa-calendar"></i> <span>Soluciones</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+        <li><a href="generarSoluciones.php">Crear Soluciones</a></li>
+        <li><a href="soluciones.php">ver Soluciones</a></li>
         </ul>
       </li>      
     </ul>

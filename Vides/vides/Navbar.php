@@ -72,8 +72,17 @@
           <li><a href="home.php">Ver Agenda</a></li>
         </ul>
       </li>
-
-      <li class="active"><a href="reporte.php"><i class="fa fa-book"></i> <span>Reportes</span></a></li>
+      <li class="treeview active">
+        <a href="#"><i class="fa fa-calendar"></i> <span>Reportes</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="reporte.php">Reporte Agenda</a></li>
+          <li><a href="Soluciones.php">Soluciones Generales</a></li>
+        </ul>
+      </li> 
       <li class="treeview active">
         <a href="#"><i class="fa fa-calendar"></i> <span>Reunión</span>
           <span class="pull-right-container">
