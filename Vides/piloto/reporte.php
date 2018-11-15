@@ -15,6 +15,14 @@
       $usuario = unserialize($usuario);
       $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
      
+         
+      $result = 0;
+      if (isset($_SESSION['result'])){
+        $result = $_SESSION['result'];
+        $_SESSION['result'] = 0; //reseto la verificacion XD
+      }else{
+        $result = 0 ;
+      }
     }else{
       header('Location: ../../index.html');
     }
@@ -57,29 +65,54 @@
     </section>
       <section class="content container-fluid">
         <div class="row">
+        
+        <?php if($result==1) { ?>
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <i class="fa fa-warning"></i>
+
+              <h3 class="box-title">Alerts</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">             
+              <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-check"></i>Mensaje</h4>
+                  Se ha agregado
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <?php } ?>
+        <?php if($result==-1) { ?>
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <i class="fa fa-warning"></i>
+
+              <h3 class="box-title">Alerts</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Error</h4>
+                No ha podido ingresar lo solicitado
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <?php } ?>
           <div class="col-xs-12">
             <div class="box">
               <center>
                 <h2>Reporte Piloto Dron</h2>
               </center>
-              <!-- 
-                  +---------------------+--------------+------+-----+---------+-------+
-                  | Field               | Type         | Null | Key | Default | Extra |
-                  +---------------------+--------------+------+-----+---------+-------+
-                  | id_reporte          | int(11)      | NO   | PRI | NULL    |       |
-                  | fecha_realizada     | datetime     | NO   |     | NULL    |       |
-                  | hora_inicial        | datetime     | YES  |     | NULL    |       |
-                  | hora_final          | datetime     | YES  |     | NULL    |       |
-                  | temperatura         | int(11)      | YES  |     | NULL    |       |
-                  | humedad             | int(11)      | YES  |     | NULL    |       |
-                  | velocidad_viento    | int(11)      | YES  |     | NULL    |       |
-                  | id_agenda           | int(11)      | NO   | MUL | NULL    |       |
-                  | id_usuario          | int(11)      | NO   | MUL | NULL    |       |
-                  | nombre_carpeta      | varchar(100) | YES  |     | NULL    |       |
-                  | URL                 | varchar(200) | YES  |     | NULL    |       |
-                  | id_vehiculo_volador | int(11)      | NO   | MUL | NULL    |       |
-                  +---------------------+--------------+------+-----+---------+-------+
-              -->
               <div class="box-body table-responsive no-padding">
               <table id="tabla1" class="table table-bordered table-hover" cellspacing="0"  width="100%">               
                   <thead>

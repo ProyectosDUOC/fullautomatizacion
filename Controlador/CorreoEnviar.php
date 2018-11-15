@@ -258,7 +258,7 @@ class CorreoEnviar{
 											<tr style='border-bottom:solid 1px #e5e5e5'>
 												<td height='16' style='line-height:16px' colspan='3'>&nbsp;</td>
 											</tr>
-										</tbody>
+										</tbody> 
 									</table>
 								</td>
 								<td width='15' style='display:block;width:15px'>&nbsp;&nbsp;&nbsp;</td>

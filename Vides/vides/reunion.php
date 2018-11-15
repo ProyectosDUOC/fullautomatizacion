@@ -15,7 +15,15 @@
       $usuario = unserialize($usuario);
       if($usuario->getId_tipo_u()==1){ //Cliente 1
       
-        $nombres = $usuario->getNombre() . " " . $usuario->getApellido();       
+        $nombres = $usuario->getNombre() . " " . $usuario->getApellido();     
+        
+        $result = 0;
+        if (isset($_SESSION['result'])){
+          $result = $_SESSION['result'];
+          $_SESSION['result'] = 0; //reseto la verificacion XD
+        }else{
+          $result = 0 ;
+        }
           
          
       }
@@ -61,6 +69,49 @@
     </section>
       <section class="content container-fluid">
         <div class="row">
+
+          <?php if($result==1) { ?>
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <i class="fa fa-warning"></i>
+
+              <h3 class="box-title">Alerts</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">             
+              <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-check"></i>Mensaje</h4>
+                  Se ha agregado
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <?php } ?>
+        <?php if($result==-1) { ?>
+        <div class="col-md-6">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <i class="fa fa-warning"></i>
+
+              <h3 class="box-title">Alerts</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Error</h4>
+                No ha podido ingresar lo solicitado
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <?php } ?>
           <div class="col-xs-12">
             <div class="box">
               <center>

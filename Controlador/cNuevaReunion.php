@@ -57,24 +57,21 @@
                 $correo = $us->getEmail();
                 $mail = CorreoEnviar::Enviar($correo, $asunto, $mens);
             }          
-        if ($mail) {
-                    echo '<script type="text/javascript">
-                    alert("Se ha Agregado una reunion");
-                    window.location="../Vides/vides/reunion.php"
-                    </script>';    
+        if ($mail) {                   
+                $_SESSION['result'] = 1; 
+                header('Location: ../Vides/vides/reunion.php');   
                 } else {
-                    echo '<script type="text/javascript">
-                alert("NO ENVIADO, intentar de nuevo");
-                window.location="../Vides/vides/reunion.php"
-                </script>';            
+                
+                    
+                $_SESSION['result'] = -1; 
+                header('Location: ../Vides/vides/reunion.php'); 
        
             }              
     }
     else {   
-        echo '<script type="text/javascript">
-        alert("Error no se pudo agregar");
-        window.location="../Vides/vides/reunion.php"
-        </script>';
+        $_SESSION['result'] = -2; 
+        header('Location: ../Vides/vides/reunion.php');    
+
     }
     
 

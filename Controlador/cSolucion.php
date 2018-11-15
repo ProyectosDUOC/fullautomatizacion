@@ -47,23 +47,17 @@
         }  
 
         if ($mail) {
-            echo '<script type="text/javascript">
-            alert("Solucion Registrada");
-            window.location="../Vides/tecnico/soluciones.php"
-            </script>';    
+            $_SESSION['result'] = 1; 
+            header('Location: ../Vides/tecnico/soluciones.php'); 
         } else {
-            echo '<script type="text/javascript">
-        alert("Solucion no Registrada");
-        window.location="../Vides/tecnico/soluciones.php"
-        </script>';            
+            $_SESSION['result'] = -1; 
+            header('Location: ../Vides/tecnico/soluciones.php');        
 
         }       
     }
     else {
-        echo '<script type="text/javascript">
-        alert("no Registrada");
-        window.location="../Vides/tecnico/soluciones.php"
-        </script>';            
+        $_SESSION['result'] = -1; 
+        header('Location: ../Vides/tecnico/soluciones.php');            
 
     }
 }catch(Exception $ex){

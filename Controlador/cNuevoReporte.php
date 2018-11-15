@@ -33,16 +33,12 @@
     $reporte = new ReporteVides($nuevoId, $fRealizada, $hInicial, $hFinal, $temp, $humedad, $viento, $idAgenda, $idUsuario, $carpeta, $url, $vehiculo);
 
     if( ReporteVidesDAO::agregar($reporte) ){
-        echo '<script type="text/javascript">
-        alert("Reporte registrado");
-        window.location="../Vides/piloto/reporte.php"
-        </script>';    
+        $_SESSION['result'] = 1; 
+        header('Location: ../Vides/piloto/reporte.php'); 
     }
     else {
-        echo '<script type="text/javascript">
-        alert("Error, Reporte no registrado");
-        window.location="../Vides/piloto/home.php"
-        </script>'; 
+        $_SESSION['result'] = -1; 
+        header('Location: ../Vides/piloto/reporte.php'); 
     }
 
 ?>

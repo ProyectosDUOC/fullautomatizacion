@@ -40,20 +40,12 @@
   
     
     if(AgendaDAO::agregar($agenda)){
-
-
-        echo '<script type="text/javascript">
-        alert("Agregado");
-        window.location="../Vides/vides/home.php"
-        </script>';
-
-            
+        $_SESSION['result'] = 1; 
+        header('Location: ../Vides/vides/home.php');               
     }
     else {   
-        echo '<script type="text/javascript">
-        alert("Error");
-        window.location="../Vides/vides/home.php"
-        </script>';
+        $_SESSION['result'] = -1; 
+        header('Location: ../Vides/vides/home.php');   
     }
     
 
