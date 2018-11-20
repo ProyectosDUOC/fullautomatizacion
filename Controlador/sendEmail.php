@@ -9,10 +9,9 @@
     $mensaje = $_GET["m"];
     $asunto = $_GET["a"];
 
-
     $mens = CorreoEnviar::mensaje2($nombre,$mensaje);
     $mail = CorreoEnviar::Enviar($correo, $asunto, $mens);
-
+    
     ?>
 
     

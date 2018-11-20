@@ -36,6 +36,12 @@
                 $_SESSION['acceso']= serialize($ac);     
                 $_SESSION['usuario']= serialize($usuario);  
                 header('Location: ../Vides/tecnico/home.php');              
+                break;     
+            case 4:
+                // echo "Ganaderia ";
+                $_SESSION['acceso']= serialize($ac);     
+                $_SESSION['usuario']= serialize($usuario);  
+                header('Location: ../Vides/tecnico/home.php');              
                 break;           
         }
     }

@@ -5,8 +5,17 @@ if (!isset($rootDir)) $rootDir = $_SERVER['DOCUMENT_ROOT'];
 require_once($rootDir . "/DB/DB.php");
 require_once($rootDir . "/Modelo/Reunion.php");
 
+abstract class CompositeReunion {
+    abstract function getBookInfo($previousBook);
+    abstract function getBookCount();
+    abstract function setBookCount($new_count);
+    abstract function addBook($oneBook);
+    abstract function removeBook($oneBook);
+}
 
-class ReunionDAO {
+
+
+class ReunionDAO  {
      public static function lastValue(){
         $cc = DB::getInstancia();
         $stSql = "SELECT * FROM reunion order by id_reunion desc  limit 1";

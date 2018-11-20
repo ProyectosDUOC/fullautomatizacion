@@ -53,20 +53,15 @@
     $come = new ComentarioReporte($idNueva, $idUsuario, $fecha_creacion, $comentari,1,$idR);
    
     if(ComentarioReporteDAO::agregar($come)){
-
-
         echo '<script type="text/javascript">
         window.location="'.$redireccion.'"
-        </script>';
-
-            
+        </script>';            
     }
     else {   
         echo '<script type="text/javascript">
         alert("Error");
         window.location="'.$redireccion.'"
         </script>';
-    }
-    
+    }    
 
 ?>
