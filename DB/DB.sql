@@ -141,6 +141,27 @@ CREATE TABLE comentario_s
     PRIMARY KEY(id_c)
   ) ;
 
+CREATE TABLE alerta_ganaderia
+  (
+    id_alerta    INTEGER NOT NULL,
+    asunto NVARCHAR (100) NOT NULL ,
+    comentario NVARCHAR (300) NOT NULL ,
+    fecha DATETIME NOT NULL ,
+    activo     INTEGER NOT NULL ,
+    PRIMARY KEY(id_alerta)
+  ) ;
+
+  CREATE TABLE alerta_vides
+  (
+    id_alerta    INTEGER NOT NULL,
+    asunto NVARCHAR (200) NOT NULL ,
+    comentario NVARCHAR (500) NOT NULL ,
+    fecha DATETIME NOT NULL ,
+    activo     INTEGER NOT NULL ,
+    PRIMARY KEY(id_alerta)
+  ) ;
+
+
 ALTER TABLE acceso ADD CONSTRAINT acceso_usuario_FK FOREIGN KEY ( id_usuario ) REFERENCES usuario ( id_usuario ) ;
 
 ALTER TABLE agenda ADD CONSTRAINT agen_estag_FK FOREIGN KEY ( id_estado_a ) REFERENCES estado_agenda ( id_estado_a ) ;

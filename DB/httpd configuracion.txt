@@ -1,0 +1,17 @@
+
+
+<VirtualHost *:80>
+  ServerName www.fullautomatizacion.cl
+  #ServerAlias localhost
+  DocumentRoot "C:\Users\benja\Desktop\fullautomatizacion"
+  <Directory "C:\Users\benja\Desktop\fullautomatizacion">
+    Options +Indexes +Includes +FollowSymLinks +MultiViews
+    #AllowOverride All
+    #Require local
+  
+
+    Order Allow,Deny
+    Allow from all
+    Require all granted
+  </Directory>
+</VirtualHost>

@@ -93,6 +93,10 @@
         <li><a href="soluciones.php">ver Soluciones</a></li>
         </ul>
       </li>        
+    
+      <li class="active"><a href="dron.php"><i class="fa fa-plus"></i> <span>Reporte Dron</span></a></li>
+    
     </ul>
+    
   </section>
 </aside>

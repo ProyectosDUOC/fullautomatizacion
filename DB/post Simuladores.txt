@@ -1,0 +1,14 @@
+
+
+Ganaderia hace un GET ha 
+
+http://www.fullautomatizacion.cl/controlador/cReportAlert.php
+
+
+ejemplo http://www.fullautomatizacion.cl/controlador/cReportAlert.php?mensaje=se%20ha%20dectectado&asunto=Alerta
+
+
+Vides hace un GET
+http://www.fullautomatizacion.cl/controlador/cReportAlertaVides.php
+
+

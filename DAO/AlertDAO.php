@@ -38,7 +38,7 @@ class AlertDAO {
     public static function actualizar($nuevo) {
         $cc=DB::getInstancia();
 
-        $stSql = "UPDATE alerta SET "
+        $stSql = "UPDATE alerta_ganaderia SET "
                 . " asunto=:asunto"
                 . ",comentario=:comentario"
                 . ",fecha=:fecha"
@@ -61,7 +61,7 @@ class AlertDAO {
 
     public static function readAll() { 
         $cc = DB::getInstancia();
-        $stSql = "SELECT * FROM alerta";
+        $stSql = "SELECT * FROM alerta_ganaderia";
         $rs = $cc->db->prepare($stSql);
         $rs->execute();
         $ba = $rs->fetchAll();

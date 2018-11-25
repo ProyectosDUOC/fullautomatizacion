@@ -41,7 +41,7 @@
                 // echo "Ganaderia ";
                 $_SESSION['acceso']= serialize($ac);     
                 $_SESSION['usuario']= serialize($usuario);  
-                header('Location: ../Vides/tecnico/home.php');              
+                header('Location: ../reporte/alertVaca.php');              
                 break;           
         }
     }
